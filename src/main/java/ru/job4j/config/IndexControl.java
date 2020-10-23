@@ -1,7 +1,8 @@
-package ru.job4j;
+package ru.job4j.config;
 
-import org.apache.maven.model.Model;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
