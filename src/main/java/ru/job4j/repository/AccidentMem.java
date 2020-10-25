@@ -8,22 +8,27 @@ import java.util.*;
 @Repository
 public class AccidentMem {
 
+    private Integer id = 3;
+
     private Map<Integer, Accident> accidents;
 
     public AccidentMem() {
         this.accidents = new HashMap<>();
-        this.accidents.put(1, new Accident(1, "First accident", "First accident text",
+        this.accidents.put(1, new Accident("First accident", "First accident text",
                 "First accident address"));
-        this.accidents.put(2, new Accident(2, "Second accident", "Second accident text",
+        this.accidents.put(2, new Accident("Second accident", "Second accident text",
                 "Second accident address"));
     }
 
     public void addAccident(Accident accident) {
-        this.accidents.put(accident.getId(), accident);
+        accident.setId(this.id);
+        this.accidents.put(this.id, accident);
+        this.id++;
     }
 
     public Accident findAccidentById(Integer id) {
-        Accident result = new Accident(0, "", "", "");
+        Accident result = new Accident("", "", "");
+        result.setId(0);
         if (accidents.containsKey(id)) {
             result =  this.accidents.get(id);
         }

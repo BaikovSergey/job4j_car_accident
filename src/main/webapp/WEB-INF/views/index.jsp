@@ -31,18 +31,35 @@
 
         </div>
         <div class="card-body">
+            <div class="container pt-2">
+                <a href="<c:url value='/create'/>" class="btn btn-success btn-lg">Add sell order</a>
+            </div>
             <div class="container pt-1">
-                <table class="table" id="allSellOrders" style="table-layout: fixed">
+                <table class="table" id="allAccidents" style="table-layout: fixed">
                     <thead class="thead-light">
                     <tr>
                         <th class="orderId" style="display: none" id="orderId">Id</th>
-                        <th style="width: 20%">Photo</th>
-                        <th style="width: 1%"></th>
-                        <th style="width: 79%">Description</th>
+                        <th>Name</th>
+                        <th>Text</th>
+                        <th>Address</th>
                     </tr>
                     </thead>
                     <tbody>
-
+                    <c:if test="${not empty allAccidents}">
+                        <c:forEach items="${allAccidents}" var="accident">
+                        <tr>
+                            <td>
+                                <c:out value="${accident.name}"/>
+                            </td>
+                            <td>
+                                <c:out value="${accident.text}"/>
+                            </td>
+                            <td>
+                                <c:out value="${accident.address}"/>
+                            </td>
+                        </tr>
+                        </c:forEach>
+                    </c:if>
                     </tbody>
                 </table>
             </div>
