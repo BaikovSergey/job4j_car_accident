@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -32,7 +32,7 @@
         </div>
         <div class="card-body">
             <div class="container pt-2">
-                <a href="<c:url value='/create'/>" class="btn btn-success btn-lg">Add sell order</a>
+                <a href="<c:url value='/create'/>" class="btn btn-success btn-lg">Add new accident</a>
             </div>
             <div class="container pt-1">
                 <table class="table" id="allAccidents" style="table-layout: fixed">
