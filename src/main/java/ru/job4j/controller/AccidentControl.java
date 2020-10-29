@@ -6,15 +6,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.model.Accident;
+import ru.job4j.service.AccidentHbmService;
 import ru.job4j.service.AccidentJDBCService;
 
 @Controller
 public class AccidentControl {
 
-    private final AccidentJDBCService jdbcService;
+    private final AccidentHbmService hbmService;
 
-    public AccidentControl(AccidentJDBCService jdbcService) {
-        this.jdbcService = jdbcService;
+    public AccidentControl(AccidentHbmService hbmService) {
+        this.hbmService = hbmService;
     }
 
     @GetMapping("/create")
@@ -32,19 +33,19 @@ public class AccidentControl {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Accident accident) {
-        this.jdbcService.create(accident);
+        this.hbmService.create(accident);
         return "redirect:/";
     }
 
     @PostMapping("/update")
     public String update(@ModelAttribute Accident accident) {
-        this.jdbcService.update(accident);
+        this.hbmService.update(accident);
         return "redirect:/";
     }
 
     @PostMapping("/delete")
     public String delete(@RequestParam int id) {
-        this.jdbcService.delete(id);
+        this.hbmService.delete(id);
         return "redirect:/";
     }
 

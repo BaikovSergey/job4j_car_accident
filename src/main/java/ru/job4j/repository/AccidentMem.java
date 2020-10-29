@@ -5,7 +5,7 @@ import ru.job4j.model.Accident;
 
 import java.util.*;
 
-@Repository
+//@Repository
 public class AccidentMem {
 
     private Integer id = 1;

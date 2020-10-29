@@ -6,7 +6,7 @@ import ru.job4j.repository.AccidentJDBC;
 
 import java.util.Collection;
 
-@Service
+//@Service
 public class AccidentJDBCService {
 
     private final AccidentJDBC jdbcTemplate;

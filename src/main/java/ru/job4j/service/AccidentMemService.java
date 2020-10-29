@@ -6,7 +6,7 @@ import ru.job4j.repository.AccidentMem;
 
 import java.util.Collection;
 
-@Service
+//@Service
 public class AccidentMemService {
 
     private final AccidentMem accidentMem = new AccidentMem();
