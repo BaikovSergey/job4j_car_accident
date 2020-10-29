@@ -15,6 +15,14 @@ public class AccidentService {
         this.accidentMem.addAccident(accident);
     }
 
+    public void updateAccident(Accident accident) {
+        this.accidentMem.updateAccident(accident);
+    }
+
+    public void deleteAccident(int id) {
+        this.accidentMem.deleteAccident(id);
+    }
+
     public Collection<Accident> getAllAccidents() {
         return this.accidentMem.findAllAccidents();
     }

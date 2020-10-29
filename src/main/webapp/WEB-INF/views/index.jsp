@@ -22,6 +22,26 @@
 
     <script>
 
+        $(document).ready(function () {
+            $("#allAccidents").on("click", "#btn-update", function () {
+                var $row = $(this).closest("tr");
+                var $id = $row.find("td:nth-child(1)").text().trim();
+                var $name = $row.find("td:nth-child(2)").text().trim();
+                var $text = $row.find("td:nth-child(3)").text().trim();
+                var $address = $row.find("td:nth-child(4)").text().trim();
+                window.location.replace("<c:url value='/update'/>" + "?id=" + $id + "&name=" + $name
+                + "&text=" + $text + "&address=" + $address);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#allAccidents").on("click", "#btn-delete", function () {
+                var $row = $(this).closest("tr");
+                var $id = $row.find("td:nth-child(1)").text().trim();
+                $.post( "<c:url value='/delete'/>", { id: $id} );
+            });
+        });
+
     </script>
 </head>
 <body>
@@ -38,24 +58,39 @@
                 <table class="table" id="allAccidents" style="table-layout: fixed">
                     <thead class="thead-light">
                     <tr>
-                        <th class="orderId" style="display: none" id="orderId">Id</th>
-                        <th>Name</th>
-                        <th>Text</th>
-                        <th>Address</th>
+                        <th style="display: none">Id</th>
+                        <th style="width: 30%">Name</th>
+                        <th style="width: 30%">Text</th>
+                        <th style="width: 30%">Address</th>
+                        <th style="width: 10%"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:if test="${not empty allAccidents}">
                         <c:forEach items="${allAccidents}" var="accident">
                         <tr>
-                            <td>
+                            <td style="display: none" id="accidentId">
+                                <c:out value="${accident.id}"/>
+                            </td>
+                            <td id="accidentName">
                                 <c:out value="${accident.name}"/>
                             </td>
-                            <td>
+                            <td id="accidentText">
                                 <c:out value="${accident.text}"/>
                             </td>
-                            <td>
+                            <td id="accidentAddress">
                                 <c:out value="${accident.address}"/>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        Options
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" id="btn-update">Edit</a>
+                                        <a class="dropdown-item" id="btn-delete">Delete</a>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         </c:forEach>

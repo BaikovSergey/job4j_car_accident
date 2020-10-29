@@ -21,6 +21,18 @@
 
     <script>
 
+        $(document).ready(function () {
+            var url = new URL(window.location);
+            var id = url.searchParams.get("id");
+            var name = url.searchParams.get("name");
+            var text = url.searchParams.get("text");
+            var address = url.searchParams.get("address");
+            $("#id").prop("value", id);
+            $("#name").prop("placeholder", name);
+            $("#text").prop("placeholder", text);
+            $("#address").prop("placeholder", address);
+        });
+
     </script>
 </head>
 <body>
@@ -28,11 +40,14 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Create new car accident
+                Update car accident
             </div>
             <div class="card-body">
-                <form action="<c:url value='/save'/>" method="post" class="was-validate">
+                <form action="<c:url value='/update'/>" method="post" class="was-validate">
                     <div class="row">
+                        <div>
+                            <input type="hidden" class="form-control" name="id" id="id">
+                        </div>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" placeholder="Accident name"
                                    name="name" id="name" required>
@@ -47,7 +62,7 @@
                         </div>
                     </div>
                     <br>
-                    <button type="submit" class="btn btn-success">Create new accident</button>
+                    <button type="submit" class="btn btn-success">Update accident</button>
                 </form>
             </div>
         </div>
