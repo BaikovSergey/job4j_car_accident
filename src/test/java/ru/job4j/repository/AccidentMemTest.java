@@ -2,7 +2,7 @@ package ru.job4j.repository;
 
 import org.junit.Test;
 import ru.job4j.model.Accident;
-import ru.job4j.service.AccidentService;
+import ru.job4j.service.AccidentMemService;
 
 import java.util.Collection;
 
@@ -13,7 +13,7 @@ public class AccidentMemTest {
 
     @Test
     public void findAllAccidents() {
-        AccidentService service = new AccidentService();
+        AccidentMemService service = new AccidentMemService();
         Collection<Accident> list = service.getAllAccidents();
         assertThat(list.size(), is(2));
     }
