@@ -2,6 +2,7 @@ package ru.job4j.repository;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import ru.job4j.model.Accident;
 
@@ -25,7 +26,9 @@ public class AccidentHbm {
 
     public void update(Accident accident) {
         try (Session session = sf.openSession()){
+            Transaction txn = session.beginTransaction();
             session.update(accident);
+            txn.commit();
         }
     }
 
@@ -33,13 +36,15 @@ public class AccidentHbm {
         Accident accident = new Accident();
         accident.setId(id);
         try (Session session = sf.openSession()) {
+            Transaction txn = session.beginTransaction();
             session.delete(accident);
+            txn.commit();
         }
     }
 
     public Accident findById(Integer id) {
         try (Session session = sf.openSession()) {
-            return session.createQuery("from accident a where a.id=:scn", Accident.class)
+            return session.createQuery("from Accident a where a.id=:scn", Accident.class)
                     .setParameter("scn", id).getSingleResult();
         }
     }
