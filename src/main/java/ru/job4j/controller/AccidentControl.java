@@ -1,13 +1,10 @@
 package ru.job4j.controller;
 
+import org.json.JSONArray;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.job4j.model.Accident;
 import ru.job4j.service.AccidentHbmService;
-import ru.job4j.service.AccidentJDBCService;
 
 @Controller
 public class AccidentControl {
@@ -47,6 +44,12 @@ public class AccidentControl {
     public String delete(@RequestParam int id) {
         this.hbmService.delete(id);
         return "redirect:/";
+    }
+
+    @RequestMapping( value="/getAllAccidents", method= RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public String getAll() {
+        return new JSONArray(this.hbmService.findAll()).toString();
     }
 
 }
