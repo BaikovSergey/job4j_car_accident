@@ -4,7 +4,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import ru.job4j.config.HbmConfig;
 import ru.job4j.model.Accident;
 import java.util.Collection;
 import static org.hamcrest.CoreMatchers.is;
@@ -16,6 +20,7 @@ public class AccidentHbmTest {
             .configure().build();
 
     private SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+
 
     @Test
     public void create() {
