@@ -63,7 +63,9 @@
 <div class="container">
     <div class="card" style="width: 100%">
         <div class="card-header">
-
+            <div class="d-flex flex-row-reverse">
+                <div class="p-2">Login as : ${user.username}</div>
+            </div>
         </div>
         <div class="card-body">
             <div class="container pt-2">
